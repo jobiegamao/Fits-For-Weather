@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
 		}
 	}
 	
+	var weatherData: WeatherResponse?
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -77,20 +79,32 @@ class MainViewController: UIViewController {
 		let url = Weather_Api_URL(lat: String(coordinates.latitude), long: String(coordinates.longitude), timezone: timezone).getAPI_URL()
 		print(url)
 		
-//		AF.request(url).responseDecodable { response in
-//			switch response.result {
-//				case .failure(let error):
-//					print(error)
-//
-//				case .success(let data):
-//
-//
-//			}
-//		}
+		
+		let decoder = JSONDecoder()
+		
+		AF.request(url).responseDecodable(of: WeatherResponse.self, decoder: decoder) { [weak self] response in
+			if let data = response.data {
+				print(String(data: data, encoding: .utf8)!)
+			}
+			if let error = response.error {
+				print("Error: \(error.localizedDescription)")
+				return
+			}
+			
+			guard let weatherResponse = response.value else {
+				print("Error: no response from weather API")
+				return
+			}
+			
+			self?.weatherData = weatherResponse
+			self?.giveAdvice()
+		}
 		
 	}
 
-
+	func giveAdvice(){
+		print(weatherData?.daily.time.last)
+	}
 }
 
 // LOCATION / COORDINATES
