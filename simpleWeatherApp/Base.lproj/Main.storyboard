@@ -1,24 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Raleway-Regular.ttf">
+            <string>Raleway-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="simpleWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timezone:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kit-eZ-WTy">
+                                <rect key="frame" x="22.999999999999993" y="161" width="95.333333333333314" height="30.333333333333343"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30.333333333333258" id="48I-oC-VLV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skin Type:" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lvo-fx-gre">
+                                <rect key="frame" x="23.000000000000007" y="209" width="92.666666666666686" height="23.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Raleway-Regular" family="Raleway" pointSize="20"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1j-mK-jM0">
+                                <rect key="frame" x="141" y="159" width="227" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select Time Zone"/>
+                                <connections>
+                                    <action selector="didTapChangeTimeZone:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G8r-it-zch"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="l7p-xP-JEc">
+                                <rect key="frame" x="16" y="285" width="352" height="525"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBz-Ko-lS3">
+                                <rect key="frame" x="141" y="203.66666666666666" width="227" height="34.333333333333343"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Select Skin Type"/>
+                                <connections>
+                                    <action selector="didTapChangeSkin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aUH-lh-rRQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="W1j-mK-jM0" firstAttribute="centerY" secondItem="kit-eZ-WTy" secondAttribute="centerY" id="1Xh-ID-VJq"/>
+                            <constraint firstItem="Lvo-fx-gre" firstAttribute="leading" secondItem="kit-eZ-WTy" secondAttribute="leading" id="8KQ-8p-kgW"/>
+                            <constraint firstItem="l7p-xP-JEc" firstAttribute="top" secondItem="OBz-Ko-lS3" secondAttribute="bottom" constant="47.000000000000028" id="CXo-eI-tVe"/>
+                            <constraint firstItem="W1j-mK-jM0" firstAttribute="leading" secondItem="kit-eZ-WTy" secondAttribute="trailing" constant="22.666666666666686" id="DQf-OW-cqx"/>
+                            <constraint firstItem="l7p-xP-JEc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="FKb-1n-gTC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="l7p-xP-JEc" secondAttribute="trailing" constant="22" id="Imk-c0-3k8"/>
+                            <constraint firstItem="OBz-Ko-lS3" firstAttribute="leading" secondItem="Lvo-fx-gre" secondAttribute="trailing" constant="25.333333333333314" id="KEG-Bh-74i"/>
+                            <constraint firstItem="OBz-Ko-lS3" firstAttribute="leading" secondItem="W1j-mK-jM0" secondAttribute="leading" id="MXK-Hp-g0o"/>
+                            <constraint firstItem="OBz-Ko-lS3" firstAttribute="centerY" secondItem="Lvo-fx-gre" secondAttribute="centerY" id="MhN-QK-EjJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OBz-Ko-lS3" secondAttribute="trailing" constant="22" id="R2k-yR-yC5"/>
+                            <constraint firstItem="kit-eZ-WTy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="23" id="Whd-CO-TIW"/>
+                            <constraint firstItem="kit-eZ-WTy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="114" id="fr8-Jg-Wlg"/>
+                            <constraint firstItem="l7p-xP-JEc" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="i1G-RW-BYc"/>
+                            <constraint firstItem="OBz-Ko-lS3" firstAttribute="width" secondItem="W1j-mK-jM0" secondAttribute="width" id="kyR-WB-cgi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="W1j-mK-jM0" secondAttribute="trailing" constant="22" id="nVk-iQ-m5x"/>
+                            <constraint firstItem="Lvo-fx-gre" firstAttribute="top" secondItem="kit-eZ-WTy" secondAttribute="bottom" constant="17.666666666666657" id="qyz-bd-Xh0"/>
+                            <constraint firstItem="l7p-xP-JEc" firstAttribute="trailing" secondItem="OBz-Ko-lS3" secondAttribute="trailing" id="sP8-6W-eVD"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="skinBtnLabel" destination="OBz-Ko-lS3" id="pqR-Wl-7r5"/>
+                        <outlet property="timezoneBtnLabel" destination="W1j-mK-jM0" id="MhG-tf-7N3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="20" y="2.8436018957345972"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
