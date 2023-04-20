@@ -22,7 +22,15 @@ class MainViewController: UIViewController {
 		}
 	}
 	
+	var url: String = ""
 	var weatherData: WeatherResponse?
+	
+
+	var computerAdvice: String = Globals().getAdvice()
+	
+	@IBOutlet var activityIndicator: UIActivityIndicatorView!
+	@IBOutlet var activityStatusLabel: UILabel!
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -75,36 +83,84 @@ class MainViewController: UIViewController {
 		present(ac, animated: true)
 	}
 	
-	private func getWeatherData(){
-		let url = Weather_Api_URL(lat: String(coordinates.latitude), long: String(coordinates.longitude), timezone: timezone).getAPI_URL()
+	private func getWeatherData(completion: @escaping () -> Void){
+		activityIndicator.startAnimating()
+		activityStatusLabel.isHidden = false
+
+		let APIurl = Weather_Api_URL(lat: String(coordinates.latitude), long: String(coordinates.longitude), timezone: timezone).getAPI_URL()
+		
+		guard url != APIurl else { return }
+		url = APIurl
 		print(url)
 		
 		
 		let decoder = JSONDecoder()
 		
 		AF.request(url).responseDecodable(of: WeatherResponse.self, decoder: decoder) { [weak self] response in
-			if let data = response.data {
-				print(String(data: data, encoding: .utf8)!)
-			}
-			if let error = response.error {
-				print("Error: \(error.localizedDescription)")
-				return
-			}
-			
+		
 			guard let weatherResponse = response.value else {
 				print("Error: no response from weather API")
+				self?.updateUI(isSuccessful: false)
 				return
 			}
 			
 			self?.weatherData = weatherResponse
 			self?.giveAdvice()
+			DispatchQueue.main.async {
+				self?.updateUI(isSuccessful: true)
+				completion()
+			}
+			
+			
 		}
 		
 	}
 
-	func giveAdvice(){
-		print(weatherData?.daily.time.last)
+	
+	
+	
+	
+	@IBAction func showAdviceBtn(_ sender: Any) {
+		activityIndicator.startAnimating()
+		activityStatusLabel.isHidden = false
+		getWeatherData{
+			let storyboard = UIStoryboard(name: "Main", bundle: nil)
+			let viewController = storyboard.instantiateViewController(withIdentifier: "AdviceViewController") as! AdviceViewController
+			viewController.text = self.computerAdvice
+			print(self.computerAdvice)
+			self.present(viewController, animated: true, completion: nil)
+		}
+		
+		
 	}
+	
+	func updateUI(isSuccessful: Bool) {
+		switch isSuccessful {
+			case false:
+				activityStatusLabel.text = "Failed.."
+
+				return
+			case true:
+				activityIndicator.stopAnimating()
+				activityStatusLabel.isHidden = true
+		}
+	}
+	
+	func giveAdvice(){
+		guard let data = weatherData else { return }
+		var text = ""
+		
+		text += data.current_weather.is_day == 1 ? "Morning sis! " : "What a fun night ahead! "
+		
+		text += data.current_weather.temperature > 28.0 ? "Wear some light clothes as it will be toasty today! " : "Cover up lil and wear those pricy jackets. "
+		
+		text += data.hourly.rain.last! > 0.0 ? "Remember to bring your umbrella to as it most likey to rain. ": ""
+		
+		computerAdvice = text
+		print(computerAdvice)
+		
+	}
+	
 }
 
 // LOCATION / COORDINATES
@@ -129,7 +185,6 @@ extension MainViewController: CLLocationManagerDelegate {
 		guard let loc = locationManager.location?.coordinate else { return }
 		
 		coordinates = loc
-		getWeatherData()
 		
 	}
 }

@@ -32,6 +32,7 @@
 		6C5A15DB29EFD09F0002FD72 /* Raleway-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A15C929EFD09F0002FD72 /* Raleway-ExtraBoldItalic.ttf */; };
 		6C5A15DC29EFD09F0002FD72 /* Raleway-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6C5A15CA29EFD09F0002FD72 /* Raleway-BoldItalic.ttf */; };
 		6C5A15DE29EFD52A0002FD72 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5A15DD29EFD52A0002FD72 /* Globals.swift */; };
+		6C63906C29F12DA900843908 /* AdviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C63906B29F12DA900843908 /* AdviceViewController.swift */; };
 		6CF4737229EFF61C0018E357 /* WeatherAPICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF4737129EFF61C0018E357 /* WeatherAPICaller.swift */; };
 		6CF4737529F003F70018E357 /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CF4737429F003F70018E357 /* CurrentWeather.swift */; };
 		796306AB5DB9BC1C55F841B4 /* Pods_simpleWeatherApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 129A58C304030AEE3E8F58F7 /* Pods_simpleWeatherApp.framework */; };
@@ -67,6 +68,7 @@
 		6C5A15C929EFD09F0002FD72 /* Raleway-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		6C5A15CA29EFD09F0002FD72 /* Raleway-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Raleway-BoldItalic.ttf"; sourceTree = "<group>"; };
 		6C5A15DD29EFD52A0002FD72 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		6C63906B29F12DA900843908 /* AdviceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewController.swift; sourceTree = "<group>"; };
 		6CF4737129EFF61C0018E357 /* WeatherAPICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAPICaller.swift; sourceTree = "<group>"; };
 		6CF4737429F003F70018E357 /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		D6BAD2B0A757E96A2B797E46 /* Pods-simpleWeatherApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-simpleWeatherApp.debug.xcconfig"; path = "Target Support Files/Pods-simpleWeatherApp/Pods-simpleWeatherApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				6C5A15A029EFB6AE0002FD72 /* MainViewController.swift */,
+				6C63906B29F12DA900843908 /* AdviceViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				6CF4737229EFF61C0018E357 /* WeatherAPICaller.swift in Sources */,
 				6C5A15DE29EFD52A0002FD72 /* Globals.swift in Sources */,
 				6C5A15A129EFB6AE0002FD72 /* MainViewController.swift in Sources */,
+				6C63906C29F12DA900843908 /* AdviceViewController.swift in Sources */,
 				6C5A159D29EFB6AE0002FD72 /* AppDelegate.swift in Sources */,
 				6CF4737529F003F70018E357 /* CurrentWeather.swift in Sources */,
 				6C5A159F29EFB6AE0002FD72 /* SceneDelegate.swift in Sources */,

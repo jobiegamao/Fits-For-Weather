@@ -42,6 +42,21 @@ class Globals {
 		defaults.set(value, forKey: UserDefaultsKeys.skinType)
 		defaults.synchronize()
 	}
+	
+	func getAdvice() -> String{
+		let defaults = getStorage()
+		if let result = defaults.string(forKey: UserDefaultsKeys.advice){
+			return result
+		}
+		
+		return ""
+	}
+	
+	func setAdvice(value: String){
+		let defaults = getStorage()
+		defaults.set(value, forKey: UserDefaultsKeys.advice)
+		defaults.synchronize()
+	}
 }
 
 struct Constants {
@@ -64,4 +79,5 @@ struct Constants {
 struct UserDefaultsKeys {
 	static let skinType = "skinType"
 	static let timezone = "timezone"
+	static let advice = "advice"
 }
